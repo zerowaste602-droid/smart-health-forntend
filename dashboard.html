@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Health Dashboard</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .dashboard {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid #1c254a;
+    }
+    canvas {
+      background: #0b1020;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">Smart Health</div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <h2 style="text-align:center;margin-top:20px;">Health Monitoring Dashboard</h2>
+
+  <div class="dashboard">
+    <div class="card">
+      <h3>Heart Rate (BPM)</h3>
+      <canvas id="heartChart"></canvas>
+    </div>
+    <div class="card">
+      <h3>Blood Pressure</h3>
+      <canvas id="bpChart"></canvas>
+    </div>
+    <div class="card">
+      <h3>Oxygen Level (%)</h3>
+      <canvas id="oxygenChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Chart.js setup
+    const createChart = (ctx, label, borderColor, backgroundColor) => {
+      return new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label,
+            data: [],
+            borderColor,
+            backgroundColor,
+            fill: false,
+            tension: 0.1
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: false,
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    };
+
+    const heartChart = createChart(
+      document.getElementById('heartChart'),
+      'BPM',
+      'rgb(255,99,132)',
+      'rgba(255,99,132,0.2)'
+    );
+    const bpChart = createChart(
+      document.getElementById('bpChart'),
+      'Blood Pressure (mmHg)',
+      'rgb(54,162,235)',
+      'rgba(54,162,235,0.2)'
+    );
+    const oxygenChart = createChart(
+      document.getElementById('oxygenChart'),
+      'Oxygen Level (%)',
+      'rgb(75,192,192)',
+      'rgba(75,192,192,0.2)'
+    );
+
+    // Function to add random data every 2 seconds
+    setInterval(() => {
+      const now = new Date().toLocaleTimeString();
+      const hr = Math.floor(Math.random() * (100 - 60) + 60);  // 60-100 BPM
+      const bp = Math.floor(Math.random() * (140 - 90) + 90);  // 90-140 mmHg
+      const ox = Math.floor(Math.random() * (100 - 95) + 95);  // 95-100 %
+
+      const update = (chart, value) => {
+        chart.data.labels.push(now);
+        chart.data.datasets[0].data.push(value);
+        if (chart.data.labels.length > 10) {
+          chart.data.labels.shift();
+          chart.data.datasets[0].data.shift();
+        }
+        chart.update();
+      };
+
+      update(heartChart, hr);
+      update(bpChart, bp);
+      update(oxygenChart, ox);
+    }, 2000);
+  </script>
+</body>
+</html>
 
