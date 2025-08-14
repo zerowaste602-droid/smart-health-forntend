@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Smart Health</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .auth-container{
+      max-width:400px;margin:50px auto;padding:24px;background:var(--card);
+      border-radius:14px;border:1px solid #1c254a;
+    }
+    .auth-container h2{text-align:center;margin-bottom:20px}
+    .auth-container label{display:block;margin-top:10px}
+    .auth-container input{
+      width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #1c254a;
+      background:#0b1020;color:var(--text);
+    }
+    .auth-container button{
+      margin-top:20px;width:100%;padding:10px;border:none;
+      border-radius:10px;background:var(--accent);color:white;cursor:pointer;
+    }
+    .auth-container p{text-align:center;margin-top:14px}
+    .auth-container a{color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">Smart Health</div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <div class="auth-container">
+    <h2>Sign Up</h2>
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name"/>
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email"/>
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Create a password"/>
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    function signup(){
+      const name=document.getElementById('name').value;
+      const email=document.getElementById('email').value;
+      const pass=document.getElementById('password').value;
+      if(name && email && pass){
+        alert(`Account created for ${name}!`);
+        window.location.href="login.html";
+      }else{
+        alert("Please fill all fields.");
+      }
+    }
+  </script>
+</body>
+</html>
