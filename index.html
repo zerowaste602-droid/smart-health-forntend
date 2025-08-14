@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Health</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">Smart Health</div>
+    <nav class="menu">
+      <a href="#features">Features</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Personal Health Monitoring made simple.</h1>
+    <p>Track vitals, get alerts, and connect with doctors — all in one place.</p>
+    <div class="cta">
+      <button id="loginBtn">Login</button>
+      <button class="secondary" id="signupBtn">Sign Up</button>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Features</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Vitals Tracking</h3>
+        <p>Record heart rate, BP, sugar and view trends.</p>
+      </div>
+      <div class="card">
+        <h3>Smart Alerts</h3>
+        <p>Get notified when readings go out of range.</p>
+      </div>
+      <div class="card">
+        <h3>Doctor Connect</h3>
+        <p>Appointments, chat, and e-prescriptions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="dashboard">
+    <h2>Quick Glance</h2>
+    <div class="stats">
+      <div class="stat">
+        <span id="hr">--</span>
+        <label>Heart Rate (bpm)</label>
+      </div>
+      <div class="stat">
+        <span id="bp">--</span>
+        <label>Blood Pressure (mmHg)</label>
+      </div>
+      <div class="stat">
+        <span id="glucose">--</span>
+        <label>Glucose (mg/dL)</label>
+      </div>
+    </div>
+    <button id="simulateBtn">Simulate Readings</button>
+  </section>
+
+  <footer id="contact" class="footer">
+    <p>© 2025 Smart Health • Built with ❤️</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
